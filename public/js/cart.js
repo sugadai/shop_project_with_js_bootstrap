@@ -51,18 +51,23 @@ function renderCart() {
   cartItemsDOM.innerHTML = "";
 
   let total = 0;
-
   cart.forEach(item => {
+    let minus_delete_btn = "-"
+    let className = "minus"
     total += item.price * item.quantity;
     const div = document.createElement("div");
     div.classList.add("cart-item");
+    if(item.quantity==1){
+    className = "delete"
+    minus_delete_btn = "🗑️"
+    }
     div.innerHTML = `
       <span>${item.name}</span>
       <span>${item.price * item.quantity}円</span>
       <div class="qty-box">
-      <button class="qty-btn minus" data-id="${item.id}">−</button>
+      <button class="qty-btn ${className}" id="${item.id}" data-id="${item.id}">${minus_delete_btn}</button>
       <span class="qty-number">${item.quantity}</span>
-      <button class="qty-btn plus" data-id="${item.id}">＋</button>
+      <button class="qty-btn plus" id="${item.id}" data-id="${item.id}">＋</button>
       </div>
     `;
 
@@ -78,6 +83,7 @@ function attachQtyEvents() {
   document.querySelectorAll(".qty-btn.plus").forEach(btn => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
+      console.log(btn)
       changeQuantity(id, 1,btn);
     });
   });
@@ -87,22 +93,29 @@ function attachQtyEvents() {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
       console.log(btn)
-      changeQuantity(id, -1,btn);
+      btn = changeQuantity(id, -1,btn);
+      
     });
   });
 }
 
 function changeQuantity(productId,diff,btnObj){
-  console.log(btnObj)
+  // console.log(btnObj)
   const item = cart.find(item => item.id == productId);
   if(!item)return;
   item.quantity = Math.max(1,item.quantity + diff);
   
-  if(item.quantity==1){
-    console.log(btnObj.classList.contains("minus"))
-    btnObj.classList.replace("minus","delete");
-    btnObj.textContent = "🗑️"
-  }
+  // if(item.quantity==1){
+  //   // saveCart()
+  //   cart.forEach(e=>{console.log(e)})
+  //   renderCart();
+  //   const btnEle = document.getElementById(productId)
+  //   console.log(btnEle)
+  //   btnEle.classList.replace("minus","delete");
+  //   btnEle.textContent = "🗑️"
+    
+  //   return;
+  // }
   saveCart();
   renderCart();
 }
