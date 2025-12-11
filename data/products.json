@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Tシャツ（白）",
+    "price": 1980,
+    "image": "/images/tshirt_white.jpg",
+    "description": "シンプルで使いやすい白Tシャツ。"
+  },
+  {
+    "id": 2,
+    "name": "Tシャツ（黒）",
+    "price": 1980,
+    "image": "/images/tshirt_black.jpg",
+    "description": "どんな場面でも合わせやすい黒Tシャツ。"
+  },
+  {
+    "id": 3,
+    "name": "パーカー",
+    "price": 4980,
+    "image": "/images/hoodie.jpg",
+    "description": "冬にぴったりのあったかパーカー。"
+  }
+]
