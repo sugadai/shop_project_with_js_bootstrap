@@ -4,7 +4,7 @@ const closeCartBtn = document.getElementById("close-cart");
 const cartItemsDOM = document.getElementById("cart-items");
 const cartTotalDOM = document.getElementById("cart-total");
 
-
+console.log('main branck')
 
 //カート情報をローカルストレージから取得（なければ空配列を返す）
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
