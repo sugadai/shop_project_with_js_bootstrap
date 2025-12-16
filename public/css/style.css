@@ -152,6 +152,15 @@ table th, table td {
   border-radius: 4px;
   cursor: pointer;
 }
+.delete-btn{
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
 
 .qty-number {
   min-width: 20px;
