@@ -4,8 +4,6 @@ const closeCartBtn = document.getElementById("close-cart");
 const cartItemsDOM = document.getElementById("cart-items");
 const cartTotalDOM = document.getElementById("cart-total");
 
-console.log("this is main branch??")
-
 
 //カート情報をローカルストレージから取得（なければ空配列を返す）
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -84,7 +82,6 @@ function attachQtyEvents() {
   document.querySelectorAll(".qty-btn.plus").forEach(btn => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
-      console.log(btn)
       changeQuantity(id, 1,btn);
     });
   });
@@ -98,6 +95,17 @@ function attachQtyEvents() {
       
     });
   });
+
+  // 🗑️ボタン
+  document.querySelectorAll(".qty-btn.delete").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.id;
+      cart = cart.filter(item=>item.id != id)
+      saveCart();
+      renderCart();
+    });
+  });
+
 }
 
 function changeQuantity(productId,diff,btnObj){
