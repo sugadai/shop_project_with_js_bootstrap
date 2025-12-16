@@ -4,9 +4,6 @@ const closeCartBtn = document.getElementById("close-cart");
 const cartItemsDOM = document.getElementById("cart-items");
 const cartTotalDOM = document.getElementById("cart-total");
 
-<<<<<<< Updated upstream
-=======
-console.log("this branch is develop or main?")
 
 >>>>>>> Stashed changes
 
