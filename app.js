@@ -24,6 +24,22 @@ app.get("/",(req,res)=>{
     res.send("Hello Node.js")
 })
 
+//DB接続確認
+const {getConnection} = require("./dbconnection")
+async function testConnection(){
+    const con = await getConnection();
+    try {
+    const [rows] = await con.query('show tables;');
+    console.log('DB接続成功:', rows);
+
+  } catch (err) {
+    console.error('DB接続失敗:', err);
+  }
+}
+testConnection();
+
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{
     console.log(`✅Server Running url is http://localhost:${PORT}/`)
